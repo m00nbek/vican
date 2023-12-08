@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
+    @FocusState private var keyboardFocused: Bool
+    
     @ObservedObject private var viewModel = LoginViewModel()
     
     var body: some View {
@@ -31,6 +33,12 @@ struct LoginView: View {
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
                     .keyboardType(.phonePad)
+                    .focused($keyboardFocused)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            keyboardFocused = true
+                        }
+                    }
                     .onChange(of: viewModel.phoneNumber) {
                         viewModel.phoneDidChange()
                     }

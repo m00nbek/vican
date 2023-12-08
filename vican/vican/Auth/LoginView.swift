@@ -65,7 +65,7 @@ struct LoginView: View {
                         .cornerRadius(8)
                         .padding(.horizontal, 20)
                 }
-                .disabled(isLoginEnabled)
+                .disabled(!isLoginEnabled)
                 .opacity(isLoginEnabled ? 1 : 0.5)
                 
                 Spacer()

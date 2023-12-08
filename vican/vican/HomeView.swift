@@ -22,7 +22,7 @@ struct HomeView: View {
             }
             
             Button {
-                AuthManager.shared.token = nil
+                AppCore.shared.token = nil
             } label: {
                 Text("clear token")
             }

@@ -13,9 +13,9 @@ struct vicanApp: App {
         WindowGroup {
             if AuthManager.shared.isAuthorized {
                 HomeView()
+            } else {
+                LoginView()
             }
-            
-            LoginView()
         }
     }
 }

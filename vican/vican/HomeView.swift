@@ -20,6 +20,13 @@ struct HomeView: View {
                     .foregroundColor(.blue)
                     .padding(.top, 10)
             }
+            
+            Button {
+                AuthManager.shared.token = nil
+            } label: {
+                Text("clear token")
+            }
+
         }
         .padding()
     }

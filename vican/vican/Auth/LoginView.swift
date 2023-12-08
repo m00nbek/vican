@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
+    @State private var showHome: Bool = false
     @State private var username: String = ""
     @State private var password: String = ""
     
@@ -15,7 +16,7 @@ struct LoginView: View {
     @State private var isLoginEnabled = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Spacer()
                 
@@ -52,10 +53,14 @@ struct LoginView: View {
                         .foregroundColor(.blue)
                         .padding(.top, 10)
                 }
+                                
+                .navigationDestination(isPresented: $showHome) {
+                    HomeView()
+                }
                 
                 Button(action: {
-                    // Perform login action here
-                    print("Login button tapped")
+                    saveToken()
+                    showHome = true
                 }) {
                     Text("Login")
                         .foregroundColor(.white)
@@ -93,6 +98,10 @@ struct LoginView: View {
         let isValidPassword = NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
         
         isLoginEnabled = isValidUsername && isValidPassword
+    }
+    
+    private func saveToken() {
+        AuthManager.shared.token = username + password
     }
 }
 

@@ -9,11 +9,8 @@ import SwiftUI
 
 struct LoginView: View {
     @State private var showHome: Bool = false
-    @State private var username: String = ""
-    @State private var password: String = ""
-    
-    // Add state variable for login button
-    @State private var isLoginEnabled = false
+    @State private var phoneNumber: String = "+998"
+    @State private var isSubmitEnabled = false
     
     var body: some View {
         NavigationStack {
@@ -23,37 +20,24 @@ struct LoginView: View {
                 Image(systemName: "person.circle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height: 100)
+                    .frame(width: 160, height: 160)
                     .padding()
                 
-                TextField("Username", text: $username)
+                Spacer()
+                
+                TextField("Phone Number", text: $phoneNumber)
                     .padding()
                     .background(Color.gray.opacity(0.1))
                     .cornerRadius(8)
                     .padding(.horizontal, 20)
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
-                    .onChange(of: username) {
-                        // Add validation logic for the username
-                        updateLoginButtonState()
+                    .keyboardType(.phonePad)
+                    .onChange(of: phoneNumber) {
+                        phoneNumber = phoneNumber.formatPhoneNumber()
+                        validateSubmitButton()
                     }
                 
-                SecureField("Password", text: $password)
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
-                    .padding(.horizontal, 20)
-                    .onChange(of: password) {
-                        // Add validation logic for the password
-                        updateLoginButtonState()
-                    }
-                
-                NavigationLink(destination: Text("Forgot Password?")) {
-                    Text("Forgot Password?")
-                        .foregroundColor(.blue)
-                        .padding(.top, 10)
-                }
-                                
                 .navigationDestination(isPresented: $showHome) {
                     HomeView()
                 }
@@ -62,7 +46,7 @@ struct LoginView: View {
                     saveToken()
                     showHome = true
                 }) {
-                    Text("Login")
+                    Text("Submit")
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
@@ -70,38 +54,25 @@ struct LoginView: View {
                         .cornerRadius(8)
                         .padding(.horizontal, 20)
                 }
-                .disabled(!isLoginEnabled)
-                .opacity(isLoginEnabled ? 1 : 0.5)
+                .disabled(!isSubmitEnabled)
+                .opacity(isSubmitEnabled ? 1 : 0.5)
                 
                 Spacer()
-                
-                HStack {
-                    Text("Don't have an account?")
-                    NavigationLink(destination: Text("Sign Up")) {
-                        Text("Sign Up")
-                            .foregroundColor(.blue)
-                    }
-                }
-                .padding(.bottom, 20)
+                Spacer()
             }
             .navigationBarTitle("Login", displayMode: .inline)
         }
     }
     
-    private func updateLoginButtonState() {
-        // Validate username with a simple regex for demonstration purposes
-        let usernameRegex = #"^[a-zA-Z0-9_-]{3,16}$"#
-        let isValidUsername = NSPredicate(format: "SELF MATCHES %@", usernameRegex).evaluate(with: username)
+    private func validateSubmitButton() {
+        let phoneRegex = #"^\+\d{3} \(\d{2}\) \d{3}-\d{4}$"#
+        let isValidPhone = NSPredicate(format: "SELF MATCHES %@", phoneRegex).evaluate(with: phoneNumber)
         
-        // Validate password with a simple regex for demonstration purposes
-        let passwordRegex = #"^(?=.*[A-Za-z])[A-Za-z\d]{3,16}$"#
-        let isValidPassword = NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
-        
-        isLoginEnabled = isValidUsername && isValidPassword
+        isSubmitEnabled = isValidPhone
     }
     
     private func saveToken() {
-        AuthManager.shared.token = username + password
+//        AuthManager.shared.token = "token"
     }
 }
 

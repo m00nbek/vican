@@ -11,7 +11,11 @@ import SwiftUI
 struct vicanApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if AuthManager.shared.isAuthorized {
+                HomeView()
+            }
+            
+            LoginView()
         }
     }
 }

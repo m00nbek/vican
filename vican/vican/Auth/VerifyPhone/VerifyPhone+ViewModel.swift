@@ -14,10 +14,14 @@ extension VerifyPhoneView {
         @Published var isVerificationEnabled: Bool = false
         
         private var cancellables: Set<AnyCancellable> = []
-        private var phoneNumber: String
         
-        init(phoneNumber: String) {
+        // init
+        private let phoneNumber: String
+        private let authProvider: AuthProvider
+        
+        init(phoneNumber: String, authProvider: AuthProvider) {
             self.phoneNumber = phoneNumber
+            self.authProvider = authProvider
             
             // Set up Combine Publisher to observe changes in the pin array
             $pins

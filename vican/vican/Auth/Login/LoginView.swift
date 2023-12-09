@@ -24,6 +24,11 @@ struct LoginView: View {
                 
                 Spacer()
                 
+                Text("Enter your phone number")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 8)
+                
                 TextField("Phone Number", text: $viewModel.phoneNumber)
                     .padding()
                     .background(Color.gray.opacity(0.1))

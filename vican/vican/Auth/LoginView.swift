@@ -9,8 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @FocusState private var keyboardFocused: Bool
-    
-    @ObservedObject private var viewModel = LoginViewModel()
+    @StateObject private var viewModel = ViewModel()
     
     var body: some View {
         NavigationStack {

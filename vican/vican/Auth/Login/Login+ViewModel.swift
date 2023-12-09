@@ -50,7 +50,7 @@ extension LoginView {
         }
         
         func createVerifyPhoneView() -> some View {
-            VerifyPhoneView()
+            VerifyPhoneView(viewModel: .init(phoneNumber: phoneNumber))
         }
         
         // MARK: - Helpers

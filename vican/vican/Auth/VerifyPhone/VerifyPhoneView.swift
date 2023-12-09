@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct VerifyPhoneView: View {
-    @StateObject private var viewModel = ViewModel()
+    @StateObject private var viewModel: ViewModel
     // pin
     @FocusState private var pinFocusState: Int?
+    
+    init(viewModel: ViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
 
     var body: some View {
         VStack {

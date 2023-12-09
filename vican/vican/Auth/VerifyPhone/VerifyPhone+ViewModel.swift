@@ -14,8 +14,11 @@ extension VerifyPhoneView {
         @Published var isVerificationEnabled: Bool = false
         
         private var cancellables: Set<AnyCancellable> = []
+        private var phoneNumber: String
         
-        init() {
+        init(phoneNumber: String) {
+            self.phoneNumber = phoneNumber
+            
             // Set up Combine Publisher to observe changes in the pin array
             $pins
                 .map { $0.allSatisfy { $0.count == 1 } } // Check if all pins are filled

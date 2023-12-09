@@ -5,7 +5,7 @@
 //  Created by m00nbek on 12/8/23.
 //
 
-import Foundation
+import SwiftUI
 import Combine
 
 extension LoginView {
@@ -43,6 +43,10 @@ extension LoginView {
         
         func validateSubmitButton() {
             isSubmitEnabled = isValidPhoneNumber(phoneNumber)
+        }
+        
+        func createVerifyPhoneView() -> some View {
+            VerifyPhoneView()
         }
         
         // MARK: - Helpers

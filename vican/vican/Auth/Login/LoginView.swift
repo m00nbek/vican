@@ -53,7 +53,7 @@ struct LoginView: View {
                             viewModel.validateSubmitButton()
                         }
                         .navigationDestination(isPresented: $viewModel.isVerifyPhonePresented) {
-                            VerifyPhoneView()
+                            viewModel.createVerifyPhoneView()
                         }
                     
                     Button(action: {

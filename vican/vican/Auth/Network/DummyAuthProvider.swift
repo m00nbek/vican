@@ -14,7 +14,8 @@ class DummyAuthProvider: AuthProvider {
         // and handle the result in the completion block
         // Simulating success for demonstration purposes
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            self?.completeWithAnyError(completion)
+//            self?.completeWithAnyError(completion)
+            self?.completionWithSuccess(completion, value: ())
         }
     }
     
@@ -31,6 +32,10 @@ class DummyAuthProvider: AuthProvider {
     
     private func completeWithAnyError<T>(_ completion: @escaping (Result<T, Error>) -> Void) {
         completion(.failure(DummyError()))
+    }
+    
+    private func completionWithSuccess<T>(_ completion: @escaping (Result<T, Error>) -> Void, value: T) {
+        completion(.success(value))
     }
 }
 

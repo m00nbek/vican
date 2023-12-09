@@ -13,8 +13,8 @@ class DummyAuthProvider: AuthProvider {
         // For example, you might make a network request to your backend
         // and handle the result in the completion block
         // Simulating success for demonstration purposes
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            completion(.success(()))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            self?.completeWithAnyError(completion)
         }
     }
     
@@ -28,4 +28,10 @@ class DummyAuthProvider: AuthProvider {
             completion(.success(authToken))
         }
     }
+    
+    private func completeWithAnyError<T>(_ completion: @escaping (Result<T, Error>) -> Void) {
+        completion(.failure(DummyError()))
+    }
 }
+
+struct DummyError: Error {}

@@ -73,6 +73,13 @@ struct LoginView: View {
                     Spacer()
                     Spacer()
                 }
+                .alert(isPresented: Binding(
+                    get: { viewModel.errorAlert != nil },
+                    set: { _ in viewModel.errorAlert = nil }
+                )) {
+                    let alert = viewModel.errorAlert!
+                    return alert
+                }
                 
                 if viewModel.isLoading {
                     Color.black.opacity(0.5)

@@ -14,6 +14,7 @@ extension LoginView {
         @Published var phoneNumber: String = "+998"
         @Published var isSubmitEnabled: Bool = false
         @Published var isLoading: Bool = false
+        @Published var errorAlert: Alert?
         
         private let authProvider: AuthProvider
         
@@ -32,7 +33,7 @@ extension LoginView {
                 case .success:
                     self?.showVerifyPhoneView()
                 case .failure(let error):
-                    print("Failed to send OTP: \(error.localizedDescription)")
+                    self?.handleError(error)
                 }
             }
         }
@@ -54,6 +55,10 @@ extension LoginView {
         }
         
         // MARK: - Helpers
+        func handleError(_ error: Error) {
+            errorAlert = Alert(title: Text("Error"), message: Text(error.localizedDescription), dismissButton: .default(Text("OK")))
+        }
+        
         private func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
             let phoneNumberRegex = #"^\+\d{3} \(\d{2}\) \d{3}-\d{4}$"#
             return phoneNumber.isValid(regex: phoneNumberRegex)

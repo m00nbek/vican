@@ -41,13 +41,16 @@ extension VerifyPhoneView {
                 
                 switch result {
                 case .success(let token):
-//                    self?.saveToken()
+                    self?.saveToken(token)
 //                    self?.showHome()
-                    print(token)
                 case .failure(let error):
                     self?.handleError(error)
                 }
             }
+        }
+        
+        func saveToken(_ token: String) {
+            AppCore.shared.token = token
         }
         
         // MARK: - Helpers

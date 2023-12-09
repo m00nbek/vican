@@ -5,13 +5,15 @@
 //  Created by m00nbek on 12/9/23.
 //
 
-import Foundation
+import SwiftUI
 import Combine
 
 extension VerifyPhoneView {
     @MainActor class ViewModel: ObservableObject {
         @Published var pins: [String] = Array(repeating: "", count: 6)
         @Published var isVerificationEnabled: Bool = false
+        @Published var isLoading: Bool = false
+        @Published var errorAlert: Alert?
         
         private var cancellables: Set<AnyCancellable> = []
         
@@ -30,9 +32,27 @@ extension VerifyPhoneView {
                 .store(in: &cancellables)
         }
         
+        // MARK: -
         func verifyPhoneNumber() {
-            // Add your API request logic here
-            print("Verifying phone number with pins: \(pins.joined())")
+            isLoading = true
+            let otpCode = pins.joined()
+            authProvider.loginWithOtp(phoneNumber: phoneNumber, otp: otpCode) { [weak self] result in
+                self?.isLoading = false
+                
+                switch result {
+                case .success(let token):
+//                    self?.saveToken()
+//                    self?.showHome()
+                    print(token)
+                case .failure(let error):
+                    self?.handleError(error)
+                }
+            }
+        }
+        
+        // MARK: - Helpers
+        func handleError(_ error: Error) {
+            errorAlert = Alert(title: Text("Error"), message: Text(error.localizedDescription), dismissButton: .default(Text("OK")))
         }
     }
 }

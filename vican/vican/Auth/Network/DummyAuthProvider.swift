@@ -24,9 +24,8 @@ class DummyAuthProvider: AuthProvider {
         // For example, you might make a network request to your backend
         // and handle the result in the completion block
         // Simulating success for demonstration purposes
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let authToken = "your_generated_auth_token"
-            completion(.success(authToken))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            self?.completeWithAnyError(completion)
         }
     }
     

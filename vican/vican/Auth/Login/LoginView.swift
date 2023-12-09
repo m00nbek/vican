@@ -52,7 +52,7 @@ struct LoginView: View {
                             viewModel.formatPhoneNumber()
                             viewModel.validateSubmitButton()
                         }
-                        .navigationDestination(isPresented: $viewModel.isHomePresented) {
+                        .navigationDestination(isPresented: $viewModel.isVerifyPhonePresented) {
                             VerifyPhoneView()
                         }
                     
@@ -78,7 +78,7 @@ struct LoginView: View {
                     Color.black.opacity(0.5)
                         .edgesIgnoringSafeArea(.all)
                     
-                    ProgressView("Sending OTP...")
+                    ProgressView("Sending verification code...")
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         .foregroundStyle(.white)
                 }

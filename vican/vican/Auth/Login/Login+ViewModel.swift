@@ -10,7 +10,7 @@ import Combine
 
 extension LoginView {
     @MainActor class ViewModel: ObservableObject {
-        @Published var isHomePresented: Bool = false
+        @Published var isVerifyPhonePresented: Bool = false
         @Published var phoneNumber: String = "+998"
         @Published var isSubmitEnabled: Bool = false
         @Published var isLoading: Bool = false
@@ -23,11 +23,11 @@ extension LoginView {
         
         // MARK: -
         func sendOtp() {
-            // start loader
             isLoading = true
+            
             authProvider.sendOtp(to: phoneNumber) { [weak self] result in
                 self?.isLoading = false
-                // stop loading
+                
                 switch result {
                 case .success:
                     print("OTP sent successfully")
@@ -43,14 +43,6 @@ extension LoginView {
         
         func validateSubmitButton() {
             isSubmitEnabled = isValidPhoneNumber(phoneNumber)
-        }
-        
-        func saveToken() {
-            //        AppCore.shared.token = "token"
-        }
-        
-        func showHome() {
-            isHomePresented = true
         }
         
         // MARK: - Helpers

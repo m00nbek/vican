@@ -16,9 +16,9 @@ extension LoginView {
         @Published var isLoading: Bool = false
         @Published var errorAlert: Alert?
         
-        private let authProvider: AuthProvider
+        private let authProvider: AuthService
         
-        init(authProvider: AuthProvider) {
+        init(authProvider: AuthService) {
             self.authProvider = authProvider
         }
         

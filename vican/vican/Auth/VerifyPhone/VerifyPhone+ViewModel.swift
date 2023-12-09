@@ -19,9 +19,9 @@ extension VerifyPhoneView {
         
         // init
         private let phoneNumber: String
-        private let authProvider: AuthProvider
+        private let authProvider: AuthService
         
-        init(phoneNumber: String, authProvider: AuthProvider) {
+        init(phoneNumber: String, authProvider: AuthService) {
             self.phoneNumber = phoneNumber
             self.authProvider = authProvider
             

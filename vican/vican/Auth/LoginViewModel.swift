@@ -19,24 +19,19 @@ class LoginViewModel: ObservableObject {
         // Network manager
     }
     
-    // MARK: - UI Events
-    func loginDidTap() {
-        saveToken()
-        showHome()
+    func formatPhoneNumber() {
+        phoneNumber = phoneNumber.formatPhoneNumber()
     }
     
-    func phoneDidChange() {
-        // format phone number
-        phoneNumber = phoneNumber.formatPhoneNumber()
+    func validateSubmitButton() {
         isSubmitEnabled = isValidPhoneNumber(phoneNumber)
     }
     
-    // MARK: - Actions
-    private func saveToken() {
+    func saveToken() {
 //        AppCore.shared.token = "token"
     }
     
-    private func showHome() {
+    func showHome() {
         isHomePresented = true
     }
     

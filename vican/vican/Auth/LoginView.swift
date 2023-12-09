@@ -40,14 +40,16 @@ struct LoginView: View {
                         }
                     }
                     .onChange(of: viewModel.phoneNumber) {
-                        viewModel.phoneDidChange()
+                        viewModel.formatPhoneNumber()
+                        viewModel.validateSubmitButton()
                     }
                     .navigationDestination(isPresented: $viewModel.isHomePresented) {
                         HomeView()
                     }
                 
                 Button(action: {
-                    viewModel.loginDidTap()
+                    viewModel.saveToken()
+                    viewModel.showHome()
                 }) {
                     Text("Submit")
                         .foregroundColor(.white)

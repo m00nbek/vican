@@ -56,8 +56,7 @@ struct LoginView: View {
                     }
                 
                 Button(action: {
-                    viewModel.saveToken()
-                    viewModel.showHome()
+                    viewModel.sendOtp()
                 }) {
                     Text("Submit")
                         .foregroundColor(.white)

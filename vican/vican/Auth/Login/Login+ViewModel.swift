@@ -20,6 +20,20 @@ extension LoginView {
             self.authProvider = authProvider
         }
         
+        // MARK: -
+        func sendOtp() {
+            // start loader
+            authProvider.sendOtp(to: phoneNumber) { result in
+                // stop loading
+                switch result {
+                case .success:
+                    print("OTP sent successfully")
+                case .failure(let error):
+                    print("Failed to send OTP: \(error.localizedDescription)")
+                }
+            }
+        }
+        
         func formatPhoneNumber() {
             phoneNumber = phoneNumber.formatPhoneNumber()
         }

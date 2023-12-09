@@ -30,7 +30,7 @@ extension LoginView {
                 
                 switch result {
                 case .success:
-                    print("OTP sent successfully")
+                    self?.showVerifyPhoneView()
                 case .failure(let error):
                     print("Failed to send OTP: \(error.localizedDescription)")
                 }
@@ -43,6 +43,10 @@ extension LoginView {
         
         func validateSubmitButton() {
             isSubmitEnabled = isValidPhoneNumber(phoneNumber)
+        }
+        
+        func showVerifyPhoneView() {
+            isVerifyPhonePresented = true
         }
         
         func createVerifyPhoneView() -> some View {

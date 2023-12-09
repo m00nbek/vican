@@ -13,6 +13,7 @@ extension LoginView {
         @Published var isHomePresented: Bool = false
         @Published var phoneNumber: String = "+998"
         @Published var isSubmitEnabled: Bool = false
+        @Published var isLoading: Bool = false
         
         private let authProvider: AuthProvider
         
@@ -23,7 +24,9 @@ extension LoginView {
         // MARK: -
         func sendOtp() {
             // start loader
-            authProvider.sendOtp(to: phoneNumber) { result in
+            isLoading = true
+            authProvider.sendOtp(to: phoneNumber) { [weak self] result in
+                self?.isLoading = false
                 // stop loading
                 switch result {
                 case .success:

@@ -6,13 +6,11 @@
 //
 
 import SwiftUI
-import Combine
 
 struct VerifyPhoneView: View {
     @StateObject private var viewModel = ViewModel()
     // pin
     @FocusState private var pinFocusState: Int?
-    @State private var pins: [String] = Array(repeating: "", count: 6)
 
     var body: some View {
         VStack {
@@ -33,19 +31,19 @@ struct VerifyPhoneView: View {
                 .padding(.top)
 
             HStack(spacing: 15) {
-                ForEach(pins.indices, id: \.self) { index in
-                    TextField("", text: $pins[index])
+                ForEach(viewModel.pins.indices, id: \.self) { index in
+                    TextField("", text: $viewModel.pins[index])
                         .multilineTextAlignment(.center)
                         .frame(width: 40, height: 40)
                         .background(Color.gray.opacity(0.1))
                         .cornerRadius(8)
                         .keyboardType(.numberPad)
-                        .onChange(of: pins[index]) {
-                            if pins[index].count > 1 {
-                                pins[index] = String(pins[index].prefix(1))
+                        .onChange(of: viewModel.pins[index]) {
+                            if viewModel.pins[index].count > 1 {
+                                viewModel.pins[index] = String(viewModel.pins[index].prefix(1))
                             }
                             
-                            handlePinChange(index: index, newValue: pins[index])
+                            handlePinChange(index: index, newValue: viewModel.pins[index])
                         }
                         .focused($pinFocusState, equals: index)
                 }
@@ -58,7 +56,7 @@ struct VerifyPhoneView: View {
             }
             
             Button {
-                // action
+                viewModel.verifyPhoneNumber()
             } label: {
                 Spacer()
                 Text("Verify")
@@ -71,6 +69,8 @@ struct VerifyPhoneView: View {
             .background(Color.blue)
             .clipShape(Capsule())
             .padding()
+            .opacity(viewModel.isVerificationEnabled ? 1 : 0.5)
+            .disabled(!viewModel.isVerificationEnabled)
         }
     }
     
@@ -82,8 +82,9 @@ struct VerifyPhoneView: View {
             pinFocusState = index.prevIndex
         }
         
-        if index == pins.indices.last {
+        if index == viewModel.pins.indices.last && viewModel.isVerificationEnabled {
             pinFocusState = nil
+            viewModel.verifyPhoneNumber()
         }
     }
 }

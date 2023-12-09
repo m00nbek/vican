@@ -19,6 +19,8 @@
 		3BF7AA802B2493DA00FB2947 /* VerifyPhone+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7AA7F2B2493DA00FB2947 /* VerifyPhone+ViewModel.swift */; };
 		3BF7AA842B24942C00FB2947 /* VerifyPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7AA832B24942C00FB2947 /* VerifyPhoneView.swift */; };
 		3BF7AA882B25011900FB2947 /* Int+index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7AA872B25011900FB2947 /* Int+index.swift */; };
+		3BF7AA8B2B250D0600FB2947 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7AA8A2B250D0600FB2947 /* AuthProvider.swift */; };
+		3BF7AA8D2B250F7800FB2947 /* DummyAuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7AA8C2B250F7800FB2947 /* DummyAuthProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		3BF7AA7F2B2493DA00FB2947 /* VerifyPhone+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerifyPhone+ViewModel.swift"; sourceTree = "<group>"; };
 		3BF7AA832B24942C00FB2947 /* VerifyPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPhoneView.swift; sourceTree = "<group>"; };
 		3BF7AA872B25011900FB2947 /* Int+index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+index.swift"; sourceTree = "<group>"; };
+		3BF7AA8A2B250D0600FB2947 /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		3BF7AA8C2B250F7800FB2947 /* DummyAuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyAuthProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,7 @@
 		3BD3FDAA2B23350700DEA070 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				3BF7AA892B250CB100FB2947 /* Network */,
 				3BF7AA822B2493E500FB2947 /* VerifyPhone */,
 				3BF7AA812B2493DD00FB2947 /* Login */,
 			);
@@ -129,6 +134,15 @@
 				3BF7AA7F2B2493DA00FB2947 /* VerifyPhone+ViewModel.swift */,
 			);
 			path = VerifyPhone;
+			sourceTree = "<group>";
+		};
+		3BF7AA892B250CB100FB2947 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3BF7AA8A2B250D0600FB2947 /* AuthProvider.swift */,
+				3BF7AA8C2B250F7800FB2947 /* DummyAuthProvider.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BF7AA8D2B250F7800FB2947 /* DummyAuthProvider.swift in Sources */,
 				3BF7AA882B25011900FB2947 /* Int+index.swift in Sources */,
 				3BD3FDA92B2334FE00DEA070 /* LoginView.swift in Sources */,
 				3BD3FDB12B23743E00DEA070 /* String+phoneNumberFormatter.swift in Sources */,
@@ -211,6 +226,7 @@
 				3B0AE00F2B21A18300E8AC11 /* HomeView.swift in Sources */,
 				3B0AE00D2B21A18300E8AC11 /* vicanApp.swift in Sources */,
 				3BD3FDB72B23999D00DEA070 /* String+regex.swift in Sources */,
+				3BF7AA8B2B250D0600FB2947 /* AuthProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

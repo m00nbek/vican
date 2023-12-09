@@ -9,7 +9,11 @@ import SwiftUI
 
 struct LoginView: View {
     @FocusState private var keyboardFocused: Bool
-    @StateObject private var viewModel = ViewModel()
+    @StateObject private var viewModel: ViewModel
+    
+    init(viewModel: ViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     var body: some View {
         NavigationStack {
@@ -71,11 +75,5 @@ struct LoginView: View {
             }
             .navigationBarTitle("Login", displayMode: .inline)
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
     }
 }

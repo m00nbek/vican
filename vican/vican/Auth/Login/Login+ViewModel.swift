@@ -14,10 +14,10 @@ extension LoginView {
         @Published var phoneNumber: String = "+998"
         @Published var isSubmitEnabled: Bool = false
         
-        init() {
-            // TODO: init with
-            // AuthProvider/Manager
-            // Network manager
+        private let authProvider: AuthProvider
+        
+        init(authProvider: AuthProvider) {
+            self.authProvider = authProvider
         }
         
         func formatPhoneNumber() {

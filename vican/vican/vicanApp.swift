@@ -14,7 +14,8 @@ struct vicanApp: App {
             if AppCore.shared.isAuthorized {
                 HomeView()
             } else {
-                LoginView()
+                let authProvider = DummyAuthProvider()
+                LoginView(viewModel: .init(authProvider: authProvider))
             }
         }
     }

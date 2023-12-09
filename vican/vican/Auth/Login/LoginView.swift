@@ -34,7 +34,7 @@ struct LoginView: View {
                     .keyboardType(.phonePad)
                     .focused($keyboardFocused)
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        DispatchQueue.main.asyncAfter(deadline: .now()) {
                             keyboardFocused = true
                         }
                     }

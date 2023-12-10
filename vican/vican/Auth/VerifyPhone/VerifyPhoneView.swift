@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct VerifyPhoneView: View {
+    @EnvironmentObject private var appRootManager: AppRootManager
     @StateObject private var viewModel: ViewModel
+    
     // pin
     @FocusState private var pinFocusState: Int?
     
@@ -96,6 +98,13 @@ struct VerifyPhoneView: View {
         .onChange(of: viewModel.isLoading) { _, newValue in
             if newValue {
                 pinFocusState = nil
+            }
+        }
+        .onChange(of: viewModel.presentHome) { _, newValue in
+            if newValue {
+                withAnimation(.easeInOut(duration: 1)) {
+                    appRootManager.currentRoot = .home
+                }
             }
         }
     }

@@ -10,11 +10,11 @@ import Combine
 
 extension VerifyPhoneView {
     @MainActor class ViewModel: ObservableObject {
+        @Published var presentHome: Bool = false
         @Published var pins: [String] = Array(repeating: "", count: 6)
         @Published var isVerificationEnabled: Bool = false
         @Published var isLoading: Bool = false
         @Published var errorAlert: Alert?
-        
         private var cancellables: Set<AnyCancellable> = []
         
         // init
@@ -42,7 +42,7 @@ extension VerifyPhoneView {
                 switch result {
                 case .success(let token):
                     self?.saveToken(token)
-//                    self?.showHome()
+                    self?.showHome()
                 case .failure(let error):
                     self?.handleError(error)
                 }
@@ -51,6 +51,10 @@ extension VerifyPhoneView {
         
         func saveToken(_ token: String) {
             AppCore.shared.token = token
+        }
+        
+        func showHome() {
+            presentHome = true
         }
         
         // MARK: - Helpers

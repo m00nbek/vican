@@ -9,14 +9,24 @@ import SwiftUI
 
 @main
 struct vicanApp: App {
+    @StateObject private var appRootManager = AppRootManager()
+    
     var body: some Scene {
         WindowGroup {
-            if AppCore.shared.isAuthorized {
-                HomeView()
-            } else {
-                let authProvider = DummyAuthService()
-                LoginView(viewModel: .init(authProvider: authProvider))
+            Group {
+                switch appRootManager.currentRoot {
+                case .splash:
+                    SplashView()
+                    
+                case .auth:
+                    let authProvider = DummyAuthService()
+                    LoginView(viewModel: .init(authProvider: authProvider))
+                    
+                case .home:
+                    HomeView()
+                }
             }
+            .environmentObject(appRootManager)
         }
     }
 }

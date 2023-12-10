@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject private var appRootManager: AppRootManager
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")

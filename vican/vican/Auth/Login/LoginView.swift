@@ -16,7 +16,7 @@ struct LoginView: View {
     }
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ZStack {
                 VStack {
                     Spacer()
@@ -48,13 +48,14 @@ struct LoginView: View {
                                 keyboardFocused = true
                             }
                         }
-                        .onChange(of: viewModel.phoneNumber) {
+                        .onChange(of: viewModel.phoneNumber) { _ in
                             viewModel.formatPhoneNumber()
                             viewModel.validateSubmitButton()
                         }
-                        .navigationDestination(isPresented: $viewModel.isVerifyPhonePresented) {
-                            viewModel.createVerifyPhoneView()
-                        }
+                    
+                    NavigationLink("", isActive: $viewModel.isVerifyPhonePresented) {
+                        viewModel.createVerifyPhoneView()
+                    }
                     
                     Button(action: {
                         viewModel.sendOtp()
@@ -91,7 +92,7 @@ struct LoginView: View {
                 }
             }
             .navigationBarTitle("Login", displayMode: .inline)
-            .onChange(of: viewModel.isLoading) { _, newValue in
+            .onChange(of: viewModel.isLoading) { newValue in
                 if newValue {
                     keyboardFocused = false
                 }

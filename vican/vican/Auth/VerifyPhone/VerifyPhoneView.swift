@@ -44,9 +44,9 @@ struct VerifyPhoneView: View {
                             .background(Color.gray.opacity(0.1))
                             .cornerRadius(8)
                             .keyboardType(.numberPad)
-                            .onChange(of: viewModel.pins[index]) {
-                                if viewModel.pins[index].count > 1 {
-                                    viewModel.pins[index] = String(viewModel.pins[index].prefix(1))
+                            .onChange(of: viewModel.pins[index]) { newValue in
+                                if newValue.count > 1 {
+                                    viewModel.pins[index] = String(newValue.prefix(1))
                                 }
                                 
                                 handlePinChange(index: index, newValue: viewModel.pins[index])
@@ -95,12 +95,12 @@ struct VerifyPhoneView: View {
                     .foregroundStyle(.white)
             }
         }
-        .onChange(of: viewModel.isLoading) { _, newValue in
+        .onChange(of: viewModel.isLoading) { newValue in
             if newValue {
                 pinFocusState = nil
             }
         }
-        .onChange(of: viewModel.presentHome) { _, newValue in
+        .onChange(of: viewModel.presentHome) { newValue in
             if newValue {
                 withAnimation(.easeInOut(duration: 1)) {
                     appRootManager.currentRoot = .home

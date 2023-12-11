@@ -11,7 +11,8 @@ import Combine
 extension VerifyPhoneView {
     @MainActor class ViewModel: ObservableObject {
         @Published var presentHome: Bool = false
-        @Published var pins: [String] = Array(repeating: "", count: 6)
+        @Published var inputCode: String = ""
+        @Published var digits: [String] = Array(repeating: "", count: 6)
         @Published var isVerificationEnabled: Bool = false
         @Published var isLoading: Bool = false
         @Published var errorAlert: Alert?
@@ -25,17 +26,23 @@ extension VerifyPhoneView {
             self.phoneNumber = phoneNumber
             self.authProvider = authProvider
             
-            // Set up Combine Publisher to observe changes in the pin array
-            $pins
+            // publishers
+            $digits
                 .map { $0.allSatisfy { $0.count == 1 } } // Check if all pins are filled
                 .assign(to: \.isVerificationEnabled, on: self)
+                .store(in: &cancellables)
+            
+            $inputCode
+                .sink { newValue in
+                    self.updateDigits(input: newValue)
+                }
                 .store(in: &cancellables)
         }
         
         // MARK: -
         func verifyPhoneNumber() {
             isLoading = true
-            let otpCode = pins.joined()
+            let otpCode = inputCode
             authProvider.loginWithOtp(phoneNumber: phoneNumber, otp: otpCode) { [weak self] result in
                 self?.isLoading = false
                 
@@ -55,6 +62,17 @@ extension VerifyPhoneView {
         
         func showHome() {
             presentHome = true
+        }
+        
+        private func updateDigits(input: String) {
+            let codeArray = Array(input)
+            for i in digits.indices {
+                if i < codeArray.count {
+                    digits[i] = String(codeArray[i])
+                } else {
+                    digits[i] = ""
+                }
+            }
         }
         
         // MARK: - Helpers

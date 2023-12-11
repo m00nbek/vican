@@ -10,9 +10,7 @@ import SwiftUI
 struct VerifyPhoneView: View {
     @EnvironmentObject private var appRootManager: AppRootManager
     @StateObject private var viewModel: ViewModel
-    
-    // pin
-    @FocusState private var pinFocusState: Int?
+    @FocusState private var keyboardFocus: Bool
     
     init(viewModel: ViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -37,27 +35,28 @@ struct VerifyPhoneView: View {
                     .padding(.top)
                 
                 HStack(spacing: 15) {
-                    ForEach(viewModel.pins.indices, id: \.self) { index in
-                        TextField("", text: $viewModel.pins[index])
-                            .multilineTextAlignment(.center)
+                    ForEach(viewModel.digits.indices) { index in
+                        Text(viewModel.digits[index])
+                            .font(.title2)
                             .frame(width: 40, height: 40)
                             .background(Color.gray.opacity(0.1))
                             .cornerRadius(8)
-                            .keyboardType(.numberPad)
-                            .onChange(of: viewModel.pins[index]) { newValue in
-                                if newValue.count > 1 {
-                                    viewModel.pins[index] = String(newValue.prefix(1))
-                                }
-                                
-                                handlePinChange(index: index, newValue: viewModel.pins[index])
-                            }
-                            .focused($pinFocusState, equals: index)
+                            .multilineTextAlignment(.center)
                     }
+                    
+                    TextField("", text: $viewModel.inputCode)
+                        .frame(width: 0, height: 0) // Hide the actual TextField
+                        .keyboardType(.numberPad)
+                        .onChange(of: viewModel.inputCode) { newValue in
+                            let limitedValue = String(newValue.prefix(viewModel.digits.count))
+                            viewModel.inputCode = limitedValue
+                        }
+                        .focused($keyboardFocus)
                 }
                 .padding(.vertical)
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now()) {
-                        pinFocusState = 0
+                        keyboardFocus = true
                     }
                 }
                 
@@ -97,7 +96,7 @@ struct VerifyPhoneView: View {
         }
         .onChange(of: viewModel.isLoading) { newValue in
             if newValue {
-                pinFocusState = nil
+                keyboardFocus = false
             }
         }
         .onChange(of: viewModel.presentHome) { newValue in
@@ -106,20 +105,6 @@ struct VerifyPhoneView: View {
                     appRootManager.currentRoot = .home
                 }
             }
-        }
-    }
-    
-    // MARK: - Helpers
-    private func handlePinChange(index: Int, newValue: String) {
-        if newValue.count == 1 {
-            pinFocusState = index.nextIndex
-        } else if newValue.isEmpty {
-            pinFocusState = index.prevIndex
-        }
-        
-        if index == viewModel.pins.indices.last && viewModel.isVerificationEnabled {
-            pinFocusState = nil
-            viewModel.verifyPhoneNumber()
         }
     }
 }

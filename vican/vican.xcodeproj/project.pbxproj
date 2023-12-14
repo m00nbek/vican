@@ -16,6 +16,7 @@
 		3BD3FDB12B23743E00DEA070 /* String+phoneNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD3FDB02B23743E00DEA070 /* String+phoneNumberFormatter.swift */; };
 		3BD3FDB52B23929800DEA070 /* Login+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD3FDB42B23929800DEA070 /* Login+ViewModel.swift */; };
 		3BD3FDB72B23999D00DEA070 /* String+regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD3FDB62B23999D00DEA070 /* String+regex.swift */; };
+		3BEB2BE32B2B9FBD00079E82 /* VerifyCodeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEB2BE22B2B9FBD00079E82 /* VerifyCodeInputView.swift */; };
 		3BF7AA802B2493DA00FB2947 /* VerifyPhone+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7AA7F2B2493DA00FB2947 /* VerifyPhone+ViewModel.swift */; };
 		3BF7AA842B24942C00FB2947 /* VerifyPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7AA832B24942C00FB2947 /* VerifyPhoneView.swift */; };
 		3BF7AA882B25011900FB2947 /* Int+index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7AA872B25011900FB2947 /* Int+index.swift */; };
@@ -36,6 +37,7 @@
 		3BD3FDB02B23743E00DEA070 /* String+phoneNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+phoneNumberFormatter.swift"; sourceTree = "<group>"; };
 		3BD3FDB42B23929800DEA070 /* Login+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+ViewModel.swift"; sourceTree = "<group>"; };
 		3BD3FDB62B23999D00DEA070 /* String+regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+regex.swift"; sourceTree = "<group>"; };
+		3BEB2BE22B2B9FBD00079E82 /* VerifyCodeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCodeInputView.swift; sourceTree = "<group>"; };
 		3BF7AA7F2B2493DA00FB2947 /* VerifyPhone+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerifyPhone+ViewModel.swift"; sourceTree = "<group>"; };
 		3BF7AA832B24942C00FB2947 /* VerifyPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPhoneView.swift; sourceTree = "<group>"; };
 		3BF7AA872B25011900FB2947 /* Int+index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+index.swift"; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		3BD3FDAA2B23350700DEA070 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				3BEB2BE12B2B9FA500079E82 /* Components */,
 				3BF7AA892B250CB100FB2947 /* Network */,
 				3BF7AA822B2493E500FB2947 /* VerifyPhone */,
 				3BF7AA812B2493DD00FB2947 /* Login */,
@@ -122,6 +125,14 @@
 				3BD3FDAB2B23385900DEA070 /* AppCore.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		3BEB2BE12B2B9FA500079E82 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3BEB2BE22B2B9FBD00079E82 /* VerifyCodeInputView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		3BF7AA812B2493DD00FB2947 /* Login */ = {
@@ -237,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BEB2BE32B2B9FBD00079E82 /* VerifyCodeInputView.swift in Sources */,
 				3BF7AA952B2542CD00FB2947 /* SplashView.swift in Sources */,
 				3BF7AA8D2B250F7800FB2947 /* DummyAuthService.swift in Sources */,
 				3BF7AA882B25011900FB2947 /* Int+index.swift in Sources */,

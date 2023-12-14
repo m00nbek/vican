@@ -34,7 +34,7 @@ struct VerifyPhoneView: View {
                     .fontWeight(.thin)
                     .padding(.top)
                 
-                VerifyCodeInput(viewModel: viewModel, keyboardFocus: _keyboardFocus)
+                VerifyCodeInputView(inputCode: $viewModel.inputCode, digits: $viewModel.digits, keyboardFocus: _keyboardFocus)
                 
                 Button {
                     viewModel.verifyPhoneNumber()
@@ -80,39 +80,6 @@ struct VerifyPhoneView: View {
                 withAnimation(.easeInOut(duration: 1)) {
                     appRootManager.currentRoot = .home
                 }
-            }
-        }
-    }
-}
-
-fileprivate struct VerifyCodeInput: View {
-    @ObservedObject var viewModel: VerifyPhoneView.ViewModel
-    @FocusState var keyboardFocus: Bool
-    
-    var body: some View {
-        HStack(spacing: 15) {
-            ForEach(viewModel.digits.indices, id: \.self) { index in
-                Text(viewModel.digits[index])
-                    .font(.title2)
-                    .frame(width: 40, height: 40)
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
-                    .multilineTextAlignment(.center)
-            }
-            
-            TextField("", text: $viewModel.inputCode)
-                .frame(width: 0, height: 0) // Hide the actual TextField
-                .keyboardType(.numberPad)
-                .onChange(of: viewModel.inputCode) { newValue in
-                    let limitedValue = String(newValue.prefix(viewModel.digits.count))
-                    viewModel.inputCode = limitedValue
-                }
-                .focused($keyboardFocus)
-        }
-        .padding(.vertical)
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now()) {
-                keyboardFocus = true
             }
         }
     }

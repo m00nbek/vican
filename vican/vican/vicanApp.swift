@@ -19,8 +19,8 @@ struct vicanApp: App {
                     SplashView()
                     
                 case .auth:
-                    let authProvider = DummyAuthService()
-                    LoginView(viewModel: .init(authProvider: authProvider))
+                    let authService = DummyAuthService()
+                    LoginView(viewModel: .init(authService: authService))
                     
                 case .home:
                     HomeView()

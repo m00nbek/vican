@@ -16,17 +16,17 @@ extension LoginView {
         @Published var isLoading: Bool = false
         @Published var errorAlert: Alert?
         
-        private let authProvider: AuthService
+        private let authService: AuthService
         
-        init(authProvider: AuthService) {
-            self.authProvider = authProvider
+        init(authService: AuthService) {
+            self.authService = authService
         }
         
         // MARK: -
         func sendOtp() {
             isLoading = true
             
-            authProvider.sendOtp(to: phoneNumber) { [weak self] result in
+            authService.sendOtp(to: phoneNumber) { [weak self] result in
                 self?.isLoading = false
                 
                 switch result {
@@ -51,7 +51,7 @@ extension LoginView {
         }
         
         func createVerifyPhoneView() -> some View {
-            VerifyPhoneView(phoneNumber: phoneNumber, authProvider: authProvider)
+            VerifyPhoneView(phoneNumber: phoneNumber, authService: authService)
         }
         
         // MARK: - Helpers

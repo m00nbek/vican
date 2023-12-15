@@ -20,11 +20,11 @@ extension VerifyPhoneView {
         
         // init
         private let phoneNumber: String
-        private let authProvider: AuthService
+        private let authService: AuthService
         
-        init(phoneNumber: String, authProvider: AuthService) {
+        init(phoneNumber: String, authService: AuthService) {
             self.phoneNumber = phoneNumber
-            self.authProvider = authProvider
+            self.authService = authService
             
             // publishers
             $digits
@@ -43,7 +43,7 @@ extension VerifyPhoneView {
         func verifyPhoneNumber() {
             isLoading = true
             let otpCode = inputCode
-            authProvider.loginWithOtp(phoneNumber: phoneNumber, otp: otpCode) { [weak self] result in
+            authService.loginWithOtp(phoneNumber: phoneNumber, otp: otpCode) { [weak self] result in
                 self?.isLoading = false
                 
                 switch result {

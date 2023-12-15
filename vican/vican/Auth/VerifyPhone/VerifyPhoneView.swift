@@ -12,8 +12,8 @@ struct VerifyPhoneView: View {
     @ObservedObject private var viewModel: ViewModel
     @FocusState private var keyboardFocus: Bool
     
-    init(phoneNumber: String, authProvider: AuthService) {
-        self.viewModel = ViewModel(phoneNumber: phoneNumber, authProvider: authProvider)
+    init(phoneNumber: String, authService: AuthService) {
+        self.viewModel = ViewModel(phoneNumber: phoneNumber, authService: authService)
     }
 
     var body: some View {

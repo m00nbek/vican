@@ -37,6 +37,14 @@ extension VerifyPhoneView {
                     self.updateDigits(input: newValue)
                 }
                 .store(in: &cancellables)
+            
+            $isVerificationEnabled
+                .sink { [weak self] newValue in
+                    if newValue {
+                        self?.verifyPhoneNumber()
+                    }
+                }
+                .store(in: &cancellables)
         }
         
         // MARK: -

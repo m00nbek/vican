@@ -25,15 +25,14 @@ extension LoginView {
         // MARK: -
         func sendOtp() {
             isLoading = true
-            
-            authService.sendOtp(to: phoneNumber) { [weak self] result in
-                self?.isLoading = false
+            Task {
+                defer { isLoading = false }
                 
-                switch result {
-                case .success:
-                    self?.showVerifyPhoneView()
-                case .failure(let error):
-                    self?.handleError(error)
+                do {
+                    try await authService.sendOtp(to: phoneNumber)
+                    showVerifyPhoneView()
+                } catch {
+                    handleError(error)
                 }
             }
         }

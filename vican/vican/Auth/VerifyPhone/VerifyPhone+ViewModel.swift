@@ -42,16 +42,15 @@ extension VerifyPhoneView {
         // MARK: -
         func verifyPhoneNumber() {
             isLoading = true
-            let otpCode = inputCode
-            authService.loginWithOtp(phoneNumber: phoneNumber, otp: otpCode) { [weak self] result in
-                self?.isLoading = false
+            Task {
+                defer { isLoading = false }
                 
-                switch result {
-                case .success(let token):
-                    self?.saveToken(token)
-                    self?.showHome()
-                case .failure(let error):
-                    self?.handleError(error)
+                do {
+                    let token = try await authService.loginWithOtp(phoneNumber: phoneNumber, otp: inputCode)
+                    saveToken(token)
+                    showHome()
+                } catch {
+                    handleError(error)
                 }
             }
         }

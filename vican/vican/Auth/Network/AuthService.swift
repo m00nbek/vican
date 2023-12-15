@@ -8,6 +8,6 @@
 import Foundation
 
 protocol AuthService {
-    func sendOtp(to phoneNumber: String, completion: @escaping (Result<Void, Error>) -> Void)
-    func loginWithOtp(phoneNumber: String, otp: String, completion: @escaping (Result<String, Error>) -> Void)
+    func sendOtp(to phoneNumber: String) async throws
+    func loginWithOtp(phoneNumber: String, otp: String) async throws -> String
 }

@@ -22,6 +22,7 @@
 		3BDEBEC82B2E3D1500302CB0 /* WorkspaceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDEBEC72B2E3D1500302CB0 /* WorkspaceRow.swift */; };
 		3BDEBECB2B2E3D3300302CB0 /* WorkspaceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDEBECA2B2E3D3300302CB0 /* WorkspaceDetail.swift */; };
 		3BDEBED12B2E461D00302CB0 /* AuthFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDEBED02B2E461D00302CB0 /* AuthFlow.swift */; };
+		3BDEBED32B2E62EB00302CB0 /* WorkspaceFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDEBED22B2E62EB00302CB0 /* WorkspaceFlow.swift */; };
 		3BEB2BE32B2B9FBD00079E82 /* VerifyCodeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEB2BE22B2B9FBD00079E82 /* VerifyCodeInputView.swift */; };
 		3BF7AA802B2493DA00FB2947 /* VerifyPhone+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7AA7F2B2493DA00FB2947 /* VerifyPhone+ViewModel.swift */; };
 		3BF7AA842B24942C00FB2947 /* VerifyPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7AA832B24942C00FB2947 /* VerifyPhoneView.swift */; };
@@ -49,6 +50,7 @@
 		3BDEBEC72B2E3D1500302CB0 /* WorkspaceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceRow.swift; sourceTree = "<group>"; };
 		3BDEBECA2B2E3D3300302CB0 /* WorkspaceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceDetail.swift; sourceTree = "<group>"; };
 		3BDEBED02B2E461D00302CB0 /* AuthFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlow.swift; sourceTree = "<group>"; };
+		3BDEBED22B2E62EB00302CB0 /* WorkspaceFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceFlow.swift; sourceTree = "<group>"; };
 		3BEB2BE22B2B9FBD00079E82 /* VerifyCodeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCodeInputView.swift; sourceTree = "<group>"; };
 		3BF7AA7F2B2493DA00FB2947 /* VerifyPhone+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerifyPhone+ViewModel.swift"; sourceTree = "<group>"; };
 		3BF7AA832B24942C00FB2947 /* VerifyPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPhoneView.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				3BDEBECE2B2E450A00302CB0 /* Models */,
 				3BDEBECF2B2E452100302CB0 /* WorkspaceList */,
 				3BDEBEC92B2E3D2C00302CB0 /* WorkspaceDetail */,
+				3BDEBED22B2E62EB00302CB0 /* WorkspaceFlow.swift */,
 			);
 			path = Workspace;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				3BDEBEC52B2E3A9100302CB0 /* Workspace.swift in Sources */,
 				3BD550242B2DB4DA00B6737F /* LoaderView.swift in Sources */,
 				3BDEBECB2B2E3D3300302CB0 /* WorkspaceDetail.swift in Sources */,
+				3BDEBED32B2E62EB00302CB0 /* WorkspaceFlow.swift in Sources */,
 				3BF7AA8B2B250D0600FB2947 /* AuthService.swift in Sources */,
 				3BDEBED12B2E461D00302CB0 /* AuthFlow.swift in Sources */,
 			);

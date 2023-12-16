@@ -82,14 +82,7 @@ struct LoginView: View {
                     return alert
                 }
                 
-                if viewModel.isLoading {
-                    Color.black.opacity(0.5)
-                        .edgesIgnoringSafeArea(.all)
-                    
-                    ProgressView("Sending verification code...")
-                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                        .foregroundStyle(.white)
-                }
+                LoaderView(isLoading: $viewModel.isLoading)
             }
             .navigationBarTitle("Login", displayMode: .inline)
             .onChange(of: viewModel.isLoading) { newValue in

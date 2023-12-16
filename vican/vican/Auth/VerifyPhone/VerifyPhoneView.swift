@@ -61,14 +61,7 @@ struct VerifyPhoneView: View {
                 return alert
             }
             
-            if viewModel.isLoading {
-                Color.black.opacity(0.5)
-                    .edgesIgnoringSafeArea(.all)
-                
-                ProgressView("Verifying...")
-                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                    .foregroundStyle(.white)
-            }
+            LoaderView(isLoading: $viewModel.isLoading)
         }
         .onChange(of: viewModel.isLoading) { newValue in
             if newValue {

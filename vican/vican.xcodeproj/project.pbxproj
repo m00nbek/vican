@@ -17,6 +17,10 @@
 		3BD3FDB52B23929800DEA070 /* Login+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD3FDB42B23929800DEA070 /* Login+ViewModel.swift */; };
 		3BD3FDB72B23999D00DEA070 /* String+regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD3FDB62B23999D00DEA070 /* String+regex.swift */; };
 		3BD550242B2DB4DA00B6737F /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD550232B2DB4DA00B6737F /* LoaderView.swift */; };
+		3BDEBEC32B2E3A2D00302CB0 /* WorkspacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDEBEC22B2E3A2D00302CB0 /* WorkspacesView.swift */; };
+		3BDEBEC52B2E3A9100302CB0 /* Workspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDEBEC42B2E3A9100302CB0 /* Workspace.swift */; };
+		3BDEBEC82B2E3D1500302CB0 /* WorkspaceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDEBEC72B2E3D1500302CB0 /* WorkspaceRow.swift */; };
+		3BDEBECB2B2E3D3300302CB0 /* WorkspaceDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDEBECA2B2E3D3300302CB0 /* WorkspaceDetail.swift */; };
 		3BEB2BE32B2B9FBD00079E82 /* VerifyCodeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEB2BE22B2B9FBD00079E82 /* VerifyCodeInputView.swift */; };
 		3BF7AA802B2493DA00FB2947 /* VerifyPhone+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7AA7F2B2493DA00FB2947 /* VerifyPhone+ViewModel.swift */; };
 		3BF7AA842B24942C00FB2947 /* VerifyPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF7AA832B24942C00FB2947 /* VerifyPhoneView.swift */; };
@@ -39,6 +43,10 @@
 		3BD3FDB42B23929800DEA070 /* Login+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+ViewModel.swift"; sourceTree = "<group>"; };
 		3BD3FDB62B23999D00DEA070 /* String+regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+regex.swift"; sourceTree = "<group>"; };
 		3BD550232B2DB4DA00B6737F /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		3BDEBEC22B2E3A2D00302CB0 /* WorkspacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspacesView.swift; sourceTree = "<group>"; };
+		3BDEBEC42B2E3A9100302CB0 /* Workspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workspace.swift; sourceTree = "<group>"; };
+		3BDEBEC72B2E3D1500302CB0 /* WorkspaceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceRow.swift; sourceTree = "<group>"; };
+		3BDEBECA2B2E3D3300302CB0 /* WorkspaceDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceDetail.swift; sourceTree = "<group>"; };
 		3BEB2BE22B2B9FBD00079E82 /* VerifyCodeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCodeInputView.swift; sourceTree = "<group>"; };
 		3BF7AA7F2B2493DA00FB2947 /* VerifyPhone+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerifyPhone+ViewModel.swift"; sourceTree = "<group>"; };
 		3BF7AA832B24942C00FB2947 /* VerifyPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPhoneView.swift; sourceTree = "<group>"; };
@@ -84,6 +92,7 @@
 				3BD3FDB32B2388C500DEA070 /* Core */,
 				3BD3FDAF2B23743100DEA070 /* Extensions */,
 				3BD3FDAA2B23350700DEA070 /* Auth */,
+				3BDEBEC12B2E3A1E00302CB0 /* Workspaces */,
 				3BF7AA972B2545CC00FB2947 /* Home */,
 				3BF7AA942B2542CD00FB2947 /* SplashView.swift */,
 				3B0AE00C2B21A18300E8AC11 /* vicanApp.swift */,
@@ -136,6 +145,25 @@
 				3BD550232B2DB4DA00B6737F /* LoaderView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		3BDEBEC12B2E3A1E00302CB0 /* Workspaces */ = {
+			isa = PBXGroup;
+			children = (
+				3BDEBEC92B2E3D2C00302CB0 /* Detail */,
+				3BDEBEC22B2E3A2D00302CB0 /* WorkspacesView.swift */,
+				3BDEBEC72B2E3D1500302CB0 /* WorkspaceRow.swift */,
+				3BDEBEC42B2E3A9100302CB0 /* Workspace.swift */,
+			);
+			path = Workspaces;
+			sourceTree = "<group>";
+		};
+		3BDEBEC92B2E3D2C00302CB0 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				3BDEBECA2B2E3D3300302CB0 /* WorkspaceDetail.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		3BEB2BE12B2B9FA500079E82 /* Components */ = {
@@ -263,6 +291,7 @@
 				3BF7AA952B2542CD00FB2947 /* SplashView.swift in Sources */,
 				3BF7AA8D2B250F7800FB2947 /* DummyAuthService.swift in Sources */,
 				3BF7AA882B25011900FB2947 /* Int+index.swift in Sources */,
+				3BDEBEC32B2E3A2D00302CB0 /* WorkspacesView.swift in Sources */,
 				3BD3FDA92B2334FE00DEA070 /* LoginView.swift in Sources */,
 				3BF7AA932B252FAD00FB2947 /* AppRootManager.swift in Sources */,
 				3BD3FDB12B23743E00DEA070 /* String+phoneNumberFormatter.swift in Sources */,
@@ -273,7 +302,10 @@
 				3B0AE00F2B21A18300E8AC11 /* HomeView.swift in Sources */,
 				3B0AE00D2B21A18300E8AC11 /* vicanApp.swift in Sources */,
 				3BD3FDB72B23999D00DEA070 /* String+regex.swift in Sources */,
+				3BDEBEC82B2E3D1500302CB0 /* WorkspaceRow.swift in Sources */,
+				3BDEBEC52B2E3A9100302CB0 /* Workspace.swift in Sources */,
 				3BD550242B2DB4DA00B6737F /* LoaderView.swift in Sources */,
+				3BDEBECB2B2E3D3300302CB0 /* WorkspaceDetail.swift in Sources */,
 				3BF7AA8B2B250D0600FB2947 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

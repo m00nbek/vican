@@ -88,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				3BD550252B2DB5A200B6737F /* Components */,
-				3BF7AA962B2545C100FB2947 /* Navigation */,
 				3BD3FDB32B2388C500DEA070 /* Core */,
 				3BD3FDAF2B23743100DEA070 /* Extensions */,
 				3BD3FDAA2B23350700DEA070 /* Auth */,
@@ -135,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				3BD3FDAB2B23385900DEA070 /* AppCore.swift */,
+				3BF7AA922B252FAD00FB2947 /* AppRootManager.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -199,14 +199,6 @@
 				3BF7AA8C2B250F7800FB2947 /* DummyAuthService.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		3BF7AA962B2545C100FB2947 /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				3BF7AA922B252FAD00FB2947 /* AppRootManager.swift */,
-			);
-			path = Navigation;
 			sourceTree = "<group>";
 		};
 		3BF7AA972B2545CC00FB2947 /* Home */ = {

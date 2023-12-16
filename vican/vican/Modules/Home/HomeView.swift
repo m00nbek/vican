@@ -8,32 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject private var appRootManager: AppRootManager
-    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-            
-            NavigationLink(destination: Text("Forgot Password?")) {
-                Text("Forgot Password?")
-                    .foregroundColor(.blue)
-                    .padding(.top, 10)
-            }
-            
-            Button {
-                AppCore.shared.token = nil
-            } label: {
-                Text("clear token")
-            }
-
+        TabView {
+            WorkspaceFlow().start()
+                .tabItem {
+                    Label("Workspaces", systemImage: "list.dash")
+                }
         }
-        .padding()
     }
-}
-
-#Preview {
-    HomeView()
 }

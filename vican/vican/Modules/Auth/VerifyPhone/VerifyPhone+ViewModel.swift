@@ -10,21 +10,22 @@ import Combine
 
 extension VerifyPhoneView {
     @MainActor class ViewModel: ObservableObject {
-        @Published var presentHome: Bool = false
         @Published var inputCode: String = ""
         @Published var digits: [String] = Array(repeating: "", count: 6)
         @Published var isVerificationEnabled: Bool = false
         @Published var isLoading: Bool = false
         @Published var errorAlert: Alert?
+        private let didFinishVerification: () -> Void
         private var cancellables: Set<AnyCancellable> = []
         
         // init
         private let phoneNumber: String
         private let authService: AuthService
         
-        init(phoneNumber: String, authService: AuthService) {
+        init(phoneNumber: String, authService: AuthService, didFinishVerification: @escaping () -> Void) {
             self.phoneNumber = phoneNumber
             self.authService = authService
+            self.didFinishVerification = didFinishVerification
             
             // publishers
             $digits
@@ -56,7 +57,7 @@ extension VerifyPhoneView {
                 do {
                     let token = try await authService.loginWithOtp(phoneNumber: phoneNumber, otp: inputCode)
                     saveToken(token)
-                    showHome()
+                    didFinishVerification()
                 } catch {
                     handleError(error)
                 }
@@ -65,10 +66,6 @@ extension VerifyPhoneView {
         
         func saveToken(_ token: String) {
             AppCore.shared.token = token
-        }
-        
-        func showHome() {
-            presentHome = true
         }
         
         private func updateDigits(input: String) {

@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct VerifyPhoneView: View {
-    @EnvironmentObject private var appRootManager: AppRootManager
     @ObservedObject private var viewModel: ViewModel
     @FocusState private var keyboardFocus: Bool
     
-    init(phoneNumber: String, authService: AuthService) {
-        self.viewModel = ViewModel(phoneNumber: phoneNumber, authService: authService)
+    init(phoneNumber: String, authService: AuthService, didFinishVerification: @escaping () -> Void) {
+        self.viewModel = ViewModel(phoneNumber: phoneNumber, authService: authService, didFinishVerification: didFinishVerification)
     }
 
     var body: some View {
@@ -66,13 +65,6 @@ struct VerifyPhoneView: View {
         .onChange(of: viewModel.isLoading) { newValue in
             if newValue {
                 keyboardFocus = false
-            }
-        }
-        .onChange(of: viewModel.presentHome) { newValue in
-            if newValue {
-                withAnimation(.easeInOut(duration: 1)) {
-                    appRootManager.currentRoot = .home
-                }
             }
         }
     }

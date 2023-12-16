@@ -15,11 +15,13 @@ extension LoginView {
         @Published var isSubmitEnabled: Bool = false
         @Published var isLoading: Bool = false
         @Published var errorAlert: Alert?
+        private let didFinishVerification: () -> Void
         
         private let authService: AuthService
         
-        init(authService: AuthService) {
+        init(authService: AuthService, didFinishVerification: @escaping () -> Void) {
             self.authService = authService
+            self.didFinishVerification = didFinishVerification
         }
         
         // MARK: -
@@ -50,7 +52,7 @@ extension LoginView {
         }
         
         func createVerifyPhoneView() -> some View {
-            VerifyPhoneView(phoneNumber: phoneNumber, authService: authService)
+            VerifyPhoneView(phoneNumber: phoneNumber, authService: authService, didFinishVerification: didFinishVerification)
         }
         
         // MARK: - Helpers

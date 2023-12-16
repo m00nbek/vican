@@ -20,7 +20,9 @@ struct vicanApp: App {
                     
                 case .auth:
                     let authService = DummyAuthService()
-                    LoginView(viewModel: .init(authService: authService))
+                    AuthFlow(authService: authService) {
+                        appRootManager.currentRoot = .home
+                    }.start()
                     
                 case .home:
                     HomeView()

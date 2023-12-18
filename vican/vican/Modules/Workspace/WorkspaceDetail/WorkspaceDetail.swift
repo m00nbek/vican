@@ -12,7 +12,7 @@ struct WorkspaceDetailView: View {
 
     var body: some View {
         VStack {
-            Image(workspace.imageName)
+            workspace.image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(8)

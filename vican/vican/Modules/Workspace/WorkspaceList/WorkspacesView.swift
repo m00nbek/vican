@@ -13,11 +13,17 @@ struct WorkspacesView: View {
     var body: some View {
         NavigationView {
             List(workspaces) { workspace in
-                NavigationLink(destination: WorkspaceDetailView(workspace: workspace)) {
+                ZStack {
                     WorkspaceRow(workspace: workspace)
+                        .shadow(radius: 12)
+                    NavigationLink(destination: WorkspaceDetailView(workspace: workspace)) {
+                        EmptyView()
+                    }.opacity(0)
                 }
+                .listRowSeparator(.hidden)
+                .listRowBackground(Color.white)
             }
-            .navigationBarTitle("Workspaces")
+            .listStyle(.plain)
         }
     }
 }

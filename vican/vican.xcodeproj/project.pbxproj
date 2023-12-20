@@ -144,7 +144,7 @@
 		3BD550252B2DB5A200B6737F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				3BDEBECD2B2E436600302CB0 /* Views */,
+				3BDEBECD2B2E436600302CB0 /* Components */,
 				3BD3FDAF2B23743100DEA070 /* Extensions */,
 			);
 			path = Shared;
@@ -179,12 +179,12 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		3BDEBECD2B2E436600302CB0 /* Views */ = {
+		3BDEBECD2B2E436600302CB0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				3BD550232B2DB4DA00B6737F /* LoaderView.swift */,
 			);
-			path = Views;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		3BDEBECE2B2E450A00302CB0 /* Models */ = {

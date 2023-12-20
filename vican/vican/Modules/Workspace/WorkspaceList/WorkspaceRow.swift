@@ -18,22 +18,28 @@ struct WorkspaceRow: View {
                 .cornerRadius(8)
 
             Text(workspace.name)
-                .font(.title)
+                .font(.headline)
                 .multilineTextAlignment(.leading)
             
             HStack(alignment: .firstTextBaseline, spacing: 12) {
                 Label("Neive", systemImage: "mappin.and.ellipse.circle")
-                    .font(.headline)
+                    .font(.caption)
                     .foregroundStyle(.green)
                     .padding(.zero)
+                    .lineLimit(1)
+                    .labelStyle(LabelWithSpacingStyle(spacing: 4))
                 Label("8 Desks", systemImage: "square.stack.3d.up")
-                    .font(.headline)
+                    .font(.caption)
                     .foregroundStyle(.green)
                     .padding(.zero)
+                    .lineLimit(1)
+                    .labelStyle(LabelWithSpacingStyle(spacing: 4))
                 Label("0 Rooms", systemImage: "door.left.hand.open")
-                    .font(.headline)
+                    .font(.caption)
                     .foregroundStyle(.green)
                     .padding(.zero)
+                    .lineLimit(1)
+                    .labelStyle(LabelWithSpacingStyle(spacing: 4))
                 Spacer()
             }
         }

@@ -11,21 +11,39 @@ struct WorkspaceRow: View {
     var workspace: Workspace
 
     var body: some View {
-        HStack {
+        VStack(alignment: .leading, spacing: 8) {
             workspace.image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 50, height: 50)
                 .cornerRadius(8)
 
-            VStack(alignment: .leading) {
-                Text(workspace.name)
+            Text(workspace.name)
+                .font(.title)
+                .multilineTextAlignment(.leading)
+            
+            HStack(alignment: .firstTextBaseline, spacing: 12) {
+                Label("Neive", systemImage: "mappin.and.ellipse.circle")
                     .font(.headline)
-                Text(workspace.description)
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundStyle(.green)
+                    .padding(.zero)
+                Label("8 Desks", systemImage: "square.stack.3d.up")
+                    .font(.headline)
+                    .foregroundStyle(.green)
+                    .padding(.zero)
+                Label("0 Rooms", systemImage: "door.left.hand.open")
+                    .font(.headline)
+                    .foregroundStyle(.green)
+                    .padding(.zero)
+                Spacer()
             }
         }
         .padding(8)
+    }
+}
+
+struct WorkspaceRow_Previews: PreviewProvider {
+    static var previews: some View {
+        WorkspaceRow(workspace: Workspace.sample[0])
+            .previewLayout(.sizeThatFits)
     }
 }

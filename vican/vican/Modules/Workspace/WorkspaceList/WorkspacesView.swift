@@ -9,22 +9,57 @@ import SwiftUI
 
 struct WorkspacesView: View {
     var workspaces: [Workspace]
+    
+    @State var searchText: String = ""
+    
+    var searchResults: [Workspace] {
+        return searchText.isEmpty ? workspaces : workspaces.filter { $0.name.contains(searchText)
+        }
+    }
 
     var body: some View {
         NavigationView {
-            List(workspaces) { workspace in
-                ZStack {
-                    WorkspaceRow(workspace: workspace)
-                        .shadow(radius: 12)
-                    NavigationLink(destination: WorkspaceDetailView(workspace: workspace)) {
-                        EmptyView()
-                    }.opacity(0)
+            VStack {
+                List(searchResults) { workspace in
+                    ZStack {
+                        WorkspaceRow(workspace: workspace)
+                            .shadow(radius: 12)
+                        NavigationLink(destination: WorkspaceDetailView(workspace: workspace)) {
+                            EmptyView()
+                        }.opacity(0)
+                    }
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.white)
                 }
-                .listRowSeparator(.hidden)
-                .listRowBackground(Color.white)
+                .listStyle(.plain)
             }
-            .listStyle(.plain)
+            .navigationTitle("Workspaces")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                // Profile
+                ToolbarItem(placement: .topBarLeading) {
+                    NavigationLink(destination: HomeView()) {
+                        Image(systemName: "person.circle.fill")
+                            .imageScale(.large)
+                            .font(.title)
+                            .foregroundStyle(.foreground)
+                    }
+                    .padding(.bottom)
+                }
+                
+                // WorkspacesOnMap
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink(destination: HomeView()) {
+                        Image(systemName: "map.circle.fill")
+                            .imageScale(.large)
+                            .font(.title)
+                            .foregroundStyle(.foreground)
+                    }
+                    .padding(.bottom)
+                }
+            }
         }
+        .searchable(text: $searchText)
     }
 }
 

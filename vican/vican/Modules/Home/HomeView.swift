@@ -12,7 +12,7 @@ struct HomeView: View {
         TabView {
             WorkspaceFlow().start()
                 .tabItem {
-                    Label("Workspaces", systemImage: "list.dash")
+                    Label("Workspaces", systemImage: "building.2")
                 }
         }
     }

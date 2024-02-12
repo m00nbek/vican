@@ -38,24 +38,24 @@ struct WorkspacesView: View {
             .toolbar {
                 // Profile
                 ToolbarItem(placement: .topBarLeading) {
-                    NavigationLink(destination: HomeView()) {
+                    NavigationLink(destination: EmptyView()) {
                         Image(systemName: "person.circle.fill")
                             .imageScale(.large)
                             .font(.title)
                             .foregroundStyle(.foreground)
                     }
-                    .padding(.bottom)
+                    .padding()
                 }
                 
                 // WorkspacesOnMap
                 ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink(destination: HomeView()) {
+                    NavigationLink(destination: EmptyView()) {
                         Image(systemName: "map.circle.fill")
                             .imageScale(.large)
                             .font(.title)
                             .foregroundStyle(.foreground)
                     }
-                    .padding(.bottom)
+                    .padding()
                 }
             }
         }
